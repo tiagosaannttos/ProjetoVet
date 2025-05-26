@@ -1,0 +1,1150 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hospital Veterinário Luviani Kauros</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <!-- html -->
+    <div class="loading">
+        <div class="spinner"></div>
+    </div>
+
+    <div class="notification" id="notification">
+        Operação realizada com sucesso!
+    </div>
+
+    <header>
+        <div class="container header-content">
+            <div class="logo-container">
+                <img src="https://i.pinimg.com/736x/5d/73/e0/5d73e0a72639ea6ba75375bce1565062.jpg" alt="Logo do Hospital Veterinário Luviani Kauros mostrando silhuetas de diferentes animais como cães, gatos e pássaros em um design circular moderno" class="logo">
+                <h1 class="hospital-name">Hospital Veterinário Luviani Kauros</h1>
+            </div>
+            <button class="theme-toggle" id="themeToggle">
+                <i class="fas fa-moon"></i>
+            </button>
+        </div>
+    </header>
+
+    <main>
+        <div class="container">
+            <!-- Tela 1 login -->
+            <div class="screen active" id="loginScreen">
+                <h2>Acesso ao Sistema</h2>
+                <form id="loginForm">
+                    <div class="form-group">
+                        <label for="username">Usuário</label>
+                        <input type="text" id="username" placeholder="Digite seu usuário" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="password">Senha</label>
+                        <input type="password" id="password" placeholder="Digite sua senha" required>
+                    </div>
+
+                    <div class="buttons-container">
+                        <button type="submit" class="btn">Entrar</button>
+                    </div>
+
+                    <div class="text-center" style="margin-top: 20px;">
+                        <a href="#" class="link" id="registerLink">Não tem conta?</a>
+                    </div>
+                </form>
+
+            </div>
+
+            <!-- Tela de cadastro -->
+            <div class="screen" id="registerScreen">
+                <h2>Criar Conta</h2>
+                <form id="registerForm">
+                    <div class="form-group">
+                        <label for="newUsername">Nome Completo</label>
+                        <input type="text" id="newUsername" placeholder="Digite seu nome completo" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="newEmail">Email</label>
+                        <input type="email" id="newEmail" placeholder="Digite seu e-mail" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="newPassword">Senha</label>
+                        <input type="password" id="newPassword" placeholder="Crie uma senha" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="confirmPassword">Confirmar Senha</label>
+                        <input type="password" id="confirmPassword" placeholder="Confirme sua senha" required>
+                    </div>
+
+                    <div class="buttons-container">
+                        <button type="button" class="btn btn-secondary" id="backToLoginBtn">Voltar</button>
+                        <button type="submit" class="btn">Cadastrar</button>
+                    </div>
+                </form>
+
+            </div>
+
+            <!-- Tela Cadastro do Animal -->
+            <div class="screen" id="animalScreen">
+                <h2>Cadastro do Animal</h2>
+
+                <label class="custom-checkbox">
+                    <input type="checkbox" id="animalRegistered">
+                    <span class="checkmark"></span>
+                    O animal já está cadastrado?
+                </label>
+
+                <div id="searchAnimalForm" style="display: none;">
+                    <div class="form-group">
+                        <label for="searchAnimalName">Nome do Animal</label>
+                        <input type="text" id="searchAnimalName" placeholder="Digite o nome do animal" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="searchAnimalBreed">Raça</label>
+                        <input type="text" id="searchAnimalBreed" placeholder="Digite a raça do animal">
+                    </div>
+
+                    <div class="buttons-container">
+                        <button type="button" class="btn btn-secondary" id="backFromSearchBtn">Voltar</button>
+                        <button type="button" class="btn" id="searchAnimalBtn">Buscar</button>
+                    </div>
+                </div>
+
+                <form id="newAnimalForm">
+                    <div class="form-group">
+                        <label for="animalName">Nome</label>
+                        <input type="text" id="animalName" placeholder="Digite o nome do seu animal" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="animalSpecies">Espécie</label>
+                        <select id="animalSpecies" required>
+                            <option value="">Selecione uma espécie</option>
+                            <option value="cachorro">Cachorro</option>
+                            <option value="gato">Gato</option>
+                            <option value="ave">Ave</option>
+                            <option value="roedor">Roedor</option>
+                            <option value="reptil">Réptil</option>
+                            <option value="peixe">Peixe</option>
+                            <option value="outro">Outro</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="animalBreed">Raça</label>
+                        <input type="text" id="animalBreed" placeholder="Digite a raça do seu animal">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="animalAge">Idade</label>
+                        <div style="display: flex; gap: 10px;">
+                            <input type="number" id="animalAge" min="0" required style="flex: 1;" placeholder="Idade do animal">
+                            <select id="ageUnit" style="width: 120px;">
+                                <option value="anos">Anos</option>
+                                <option value="meses">Meses</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="healthHistory">Histórico de Saúde</label>
+                        <textarea id="healthHistory" rows="3" placeholder="Descreva o histórico de saúde do seu animal (opcional)"></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="visitHistory">Histórico de Visitas</label>
+                        <textarea id="visitHistory" rows="3" placeholder="Descreva o histórico de visitas anteriores (opcional)"></textarea>
+                    </div>
+
+                    <div class="buttons-container">
+                        <button type="button" class="btn btn-secondary" id="backToLoginFromAnimalBtn">Voltar</button>
+                        <button type="submit" class="btn">Continuar</button>
+                    </div>
+                </form>
+            </div>
+
+            <!-- Tela guia de especialidades -->
+
+            <div class="screen" id="servicesScreen">
+                <h2>Serviços Disponíveis</h2>
+                <p>Selecione os serviços desejados:</p>
+
+                <div class="services-container">
+                    <div class="service-card" data-service="banho">
+                        <div class="service-title">
+                            <i class="fas fa-bath"></i> Banho
+                        </div>
+                        <div class="service-description">
+                            Banho completo com produtos de qualidade.
+                        </div>
+                        <div class="service-price">R$ 50,00</div>
+                    </div>
+
+                    <div class="service-card" data-service="tosa">
+                        <div class="service-title">
+                            <i class="fas fa-cut"></i> Tosa
+                        </div>
+                        <div class="service-description">
+                            Tosa higiênica ou estética.
+                        </div>
+                        <div class="service-price">R$ 70,00</div>
+                    </div>
+
+                    <div class="service-card" data-service="doacao">
+                        <div class="service-title">
+                            <i class="fas fa-hand-holding-heart"></i> Doação
+                        </div>
+                        <div class="service-description">
+                            Doe seu pet aqui, evite o abandono.
+                        </div>
+                        <div class="service-price">Doe seu pet com responsabilidade. Evite maus-tratos e o abandono.</div>
+                    </div>
+
+                    <div class="service-card" data-service="vacinacao" data-has-submenu="true">
+                        <div class="service-title">
+                            <i class="fas fa-syringe"></i> Vacinação
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="service-description">
+                            Diversas vacinas disponíveis.
+                        </div>
+                        <div class="service-price">A partir de R$ 80,00</div>
+
+                        <div class="submenu" id="vacinacaoSubmenu">
+                            <div class="submenu-item" data-subservice="v10">V10 - R$ 120,00</div>
+                            <div class="submenu-item" data-subservice="antirrabica">Antirrábica - R$ 80,00</div>
+                            <div class="submenu-item" data-subservice="giardíase">Giardíase - R$ 100,00</div>
+                            <div class="submenu-item" data-subservice="gripe">Gripe Canina - R$ 90,00</div>
+                        </div>
+                    </div>
+
+                    <div class="service-card" data-service="consultas" data-has-submenu="true">
+                        <div class="service-title">
+                            <i class="fas fa-stethoscope"></i> Consultas
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="service-description">
+                            Consultas com especialistas.
+                        </div>
+                        <div class="service-price">A partir de R$ 150,00</div>
+
+                        <div class="submenu" id="consultasSubmenu">
+                            <div class="submenu-item" data-subservice="clinico">Clínico Geral - R$ 150,00</div>
+                            <div class="submenu-item" data-subservice="dermatologista">Dermatologista - R$ 200,00</div>
+                            <div class="submenu-item" data-subservice="cardiologista">Cardiologista - R$ 250,00</div>
+                            <div class="submenu-item" data-subservice="ortopedista">Ortopedista - R$ 250,00</div>
+                        </div>
+                    </div>
+
+                    <div class="service-card" data-service="cirurgias-basicas" data-has-submenu="true">
+                        <div class="service-title">
+                            <i class="fas fa-briefcase-medical"></i> Cirurgias Básicas
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="service-description">
+                            Procedimentos cirúrgicos simples.
+                        </div>
+                        <div class="service-price">A partir de R$ 300,00</div>
+
+                        <div class="submenu" id="cirurgiasBasicasSubmenu">
+                            <div class="submenu-item" data-subservice="castracao">Castração - R$ 300,00</div>
+                            <div class="submenu-item" data-subservice="limpeza-dentaria">Limpeza Dentária - R$ 350,00</div>
+                            <div class="submenu-item" data-subservice="retirada-tumor">Retirada de Tumor Simples - R$ 400,00</div>
+                        </div>
+                    </div>
+
+                    <div class="service-card" data-service="cirurgias-avancadas" data-has-submenu="true">
+                        <div class="service-title">
+                            <i class="fas fa-user-md"></i> Cirurgias Avançadas
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="service-description">
+                            Procedimentos cirúrgicos complexos.
+                        </div>
+                        <div class="service-price">A partir de R$ 800,00</div>
+
+                        <div class="submenu" id="cirurgiasAvancadasSubmenu">
+                            <div class="submenu-item" data-subservice="ortopedica">Ortopédica - R$ 1.200,00</div>
+                            <div class="submenu-item" data-subservice="oftalmologica">Oftalmológica - R$ 800,00</div>
+                            <div class="submenu-item" data-subservice="oncologica">Oncológica - R$ 1.500,00</div>
+                        </div>
+                    </div>
+
+                    <div class="service-card" data-service="neurocirurgias" data-has-submenu="true">
+                        <div class="service-title">
+                            <i class="fas fa-brain"></i> Neurocirurgias
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="service-description">
+                            Cirurgias neurológicas especializadas.
+                        </div>
+                        <div class="service-price">A partir de R$ 2.000,00</div>
+
+                        <div class="submenu" id="neurocirurgiasSubmenu">
+                            <div class="submenu-item" data-subservice="hernia-disco">Hérnia de Disco - R$ 2.000,00</div>
+                            <div class="submenu-item" data-subservice="tumor-cerebral">Tumor Cerebral - R$ 3.500,00</div>
+                            <div class="submenu-item" data-subservice="trauma-craniano">Trauma Craniano - R$ 2.500,00</div>
+                        </div>
+                    </div>
+
+                    <div class="service-card" data-service="hospedagens">
+                        <div class="service-title">
+                            <i class="fas fa-home"></i> Hospedagens
+                        </div>
+                        <div class="service-description">
+                            Hospedagem com cuidados especiais.
+                        </div>
+                        <div class="service-price">R$ 80,00/dia</div>
+                    </div>
+                </div>
+
+                <div class="buttons-container">
+                    <button type="button" class="btn btn-secondary" id="backToAnimalBtn">Voltar</button>
+                    <button type="button" class="btn" id="nextToScheduleBtn">Próximo</button>
+                </div>
+            </div>
+
+            <!-- Tela 4 Agendamento -->
+            <div class="screen" id="scheduleScreen">
+                <h2>Agendamento</h2>
+                <form id="scheduleForm">
+                    <div class="form-group">
+                        <label for="entryDate">Data de Entrada</label>
+                        <input type="date" id="entryDate" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="entryTime">Hora de Entrada</label>
+                        <input type="time" id="entryTime" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="exitDate">Data de Saída</label>
+                        <input type="date" id="exitDate" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="exitTime">Hora de Saída</label>
+                        <input type="time" id="exitTime" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="stayDuration">Duração da Estadia</label>
+                        <input type="text" id="stayDuration" readonly>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="observations">Observações Adicionais</label>
+                        <textarea id="observations" rows="3" placeholder="Informe medicamentos, cuidados especiais ou outras observações importantes."></textarea>
+                    </div>
+
+                    <div class="buttons-container">
+                        <button type="button" class="btn btn-secondary" id="backToServicesBtn">Voltar</button>
+                        <button type="submit" class="btn">Confirmar Agendamento</button>
+                    </div>
+                </form>
+            </div>
+
+            <!-- Tela 5 Pagamentos -->
+            <div class="screen" id="paymentScreen">
+                <h2>Pagamento</h2>
+
+                <div class="summary-container">
+                    <div class="summary-title">Resumo dos Serviços</div>
+                    <div id="servicesSummary">
+                    </div>
+                    <div class="summary-total">
+                        <span>Total:</span>
+                        <span id="totalAmount">R$ 0,00</span>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>Selecione a forma de pagamento:</label>
+                    <div class="payment-methods">
+                        <div class="payment-method" data-method="credit">
+                            <i class="fas fa-credit-card payment-icon"></i>
+                            <span>Cartão de Crédito</span>
+                        </div>
+                        <div class="payment-method" data-method="debit">
+                            <i class="fas fa-credit-card payment-icon"></i>
+                            <span>Cartão de Débito</span>
+                        </div>
+                        <div class="payment-method" data-method="pix">
+                            <i class="fas fa-qrcode payment-icon"></i>
+                            <span>PIX</span>
+                        </div>
+                        <div class="payment-method" data-method="cash">
+                            <i class="fas fa-money-bill-wave payment-icon"></i>
+                            <span>Dinheiro</span>
+                        </div>
+                        <div class="payment-method" data-method="boleto">
+                            <i class="fas fa-barcode payment-icon"></i>
+                            <span>Boleto</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="cardForm" style="display: none;">
+                    <div class="form-group">
+                        <label for="cardNumber">Número do Cartão</label>
+                        <input type="text" id="cardNumber" placeholder="0000 0000 0000 0000">
+                    </div>
+
+                    <div style="display: flex; gap: 15px;">
+                        <div class="form-group" style="flex: 1;">
+                            <label for="cardExpiry">Validade</label>
+                            <input type="text" id="cardExpiry" placeholder="MM/AA">
+                        </div>
+                        <div class="form-group" style="flex: 1;">
+                            <label for="cardCvv">CVV</label>
+                            <input type="text" id="cardCvv" placeholder="123">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="cardName">Nome no Cartão</label>
+                        <input type="text" id="cardName" placeholder="NOME COMO ESTÁ NO CARTÃO">
+                    </div>
+                </div>
+
+                <div id="pixQrCode" style="display: none;" class="qr-code-container">
+                    <img src="https://i.pinimg.com/736x/b6/8e/0e/b68e0e73ea2fdaf60bcb4f94f1041ce0.jpg" alt="QR Code para pagamento via PIX" class="qr-code">
+                    <p>Escaneie o QR Code para pagar</p>
+                    <p>Chave PIX: hospital@luvianikauros.com.br</p>
+                </div>
+
+                <div id="boletoInfo" style="display: none;" class="qr-code-container">
+                    <div style="background-color: rgba(62, 61, 61, 0.381); padding: 15px; border-radius: 8px; margin-bottom: 15px;">
+                        <div style="font-family: monospace; font-size: 14px; word-break: break-all; text-align: center;">
+                            34191.79001 01043.510047 91020.150008 7 89150000029999
+                        </div>
+                    </div>
+                    <p>Código de barras do boleto</p>
+                    <p>Vencimento: 3 dias úteis</p>
+                </div>
+
+                <div id="cashInfo" style="display: none;" class="text-center" style="margin: 20px 0;">
+                    <p>Pagamento em dinheiro será realizado no local.</p>
+                    <p>Por favor, tenha o valor exato se possível.</p>
+                </div>
+
+                <div class="buttons-container">
+                    <button type="button" class="btn btn-secondary" id="backToScheduleBtn">Voltar</button>
+                    <button type="button" class="btn" id="payBtn">Pagar</button>
+                </div>
+            </div>
+
+            <div class="screen" id="receiptScreen">
+                <h2>Pagamento Confirmado</h2>
+
+                <div class="receipt">
+                    <div class="receipt-header">
+                        <img src="https://i.pinimg.com/736x/5d/73/e0/5d73e0a72639ea6ba75375bce1565062.jpg" alt="Logo do Hospital Veterinário Luviani Kauros" class="receipt-logo">
+                        <div class="receipt-title">Hospital Veterinário Luviani Kauros</div>
+                        <p>Comprovante de Pagamento</p>
+                    </div>
+
+                    <div class="receipt-details">
+                        <div class="receipt-row">
+                            <span>Data:</span>
+                            <span id="receiptDate"></span>
+                        </div>
+                        <div class="receipt-row">
+                            <span>Hora:</span>
+                            <span id="receiptTime"></span>
+                        </div>
+                        <div class="receipt-row">
+                            <span>Paciente:</span>
+                            <span id="receiptAnimal"></span>
+                        </div>
+                        <div class="receipt-row">
+                            <span>Serviços:</span>
+                            <span id="receiptServices"></span>
+                        </div>
+                        <div class="receipt-row">
+                            <span>Agendamento:</span>
+                            <span id="receiptSchedule"></span>
+                        </div>
+                        <div class="receipt-row">
+                            <span>Forma de Pagamento:</span>
+                            <span id="receiptPaymentMethod"></span>
+                        </div>
+                        <div class="receipt-row">
+                            <span>Total:</span>
+                            <span id="receiptTotal"></span>
+                        </div>
+                    </div>
+
+                    <div class="receipt-footer">
+                        <p>Obrigado por confiar em nossos serviços!</p>
+                        <p>Código de Confirmação: <span id="confirmationCode"></span></p>
+                    </div>
+                </div>
+
+                <div class="buttons-container">
+                    <button type="button" class="btn btn-secondary" id="downloadReceiptBtn">
+                        <i class="fas fa-download"></i> Baixar Comprovante
+                    </button>
+                    <button type="button" class="btn" id="newAppointmentBtn">Agendar Nova Consulta</button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <div class="chat-button" id="chatButton">
+        <i class="fas fa-comment-dots"></i>
+    </div>
+
+    <div class="chat-container" id="chatContainer">
+        <div class="chat-header">
+            <div class="chat-title">Atendimento Online</div>
+            <button class="close-chat" id="closeChat">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <div class="chat-messages" id="chatMessages">
+            <div class="message received">
+                Olá! Bem-vindo ao Hospital Veterinário Luviani Kauros. Como posso ajudar?
+            </div>
+            <div class="message received">
+                Você pode escolher uma das opções:
+                <br>1. Dúvidas sobre consultas
+                <br>2. Emergência veterinária
+                <br>3. Informações sobre serviços
+                <br>4. Falar com um atendente
+            </div>
+        </div>
+        <div class="chat-input">
+            <input type="text" id="chatInput" placeholder="Digite sua mensagem...">
+            <button class="send-button" id="sendMessage">
+                <i class="fas fa-paper-plane"></i>
+            </button>
+        </div>
+    </div>
+    <!-- Final html -->
+
+    <script>
+        // Início JavaScript
+        document.addEventListener('DOMContentLoaded', function() {
+
+            let currentScreen = 'loginScreen';
+            let darkMode = false;
+            let selectedServices = [];
+            let selectedPaymentMethod = '';
+            let totalAmount = 0;
+            let animalData = {};
+
+
+            const screens = document.querySelectorAll('.screen');
+            const themeToggle = document.getElementById('themeToggle');
+            const chatButton = document.getElementById('chatButton');
+            const chatContainer = document.getElementById('chatContainer');
+            const closeChat = document.getElementById('closeChat');
+            const sendMessage = document.getElementById('sendMessage');
+            const chatInput = document.getElementById('chatInput');
+            const chatMessages = document.getElementById('chatMessages');
+            const loading = document.querySelector('.loading');
+            const notification = document.getElementById('notification');
+
+
+            const loginForm = document.getElementById('loginForm');
+            const registerForm = document.getElementById('registerForm');
+            const newAnimalForm = document.getElementById('newAnimalForm');
+            const scheduleForm = document.getElementById('scheduleForm');
+
+
+            const registerLink = document.getElementById('registerLink');
+            const backToLoginBtn = document.getElementById('backToLoginBtn');
+            const backToLoginFromAnimalBtn = document.getElementById('backToLoginFromAnimalBtn');
+            const backToAnimalBtn = document.getElementById('backToAnimalBtn');
+            const backToServicesBtn = document.getElementById('backToServicesBtn');
+            const backToScheduleBtn = document.getElementById('backToScheduleBtn');
+            const nextToScheduleBtn = document.getElementById('nextToScheduleBtn');
+            const payBtn = document.getElementById('payBtn');
+            const downloadReceiptBtn = document.getElementById('downloadReceiptBtn');
+            const newAppointmentBtn = document.getElementById('newAppointmentBtn');
+
+
+            const animalRegistered = document.getElementById('animalRegistered');
+            const searchAnimalForm = document.getElementById('searchAnimalForm');
+            const searchAnimalBtn = document.getElementById('searchAnimalBtn');
+            const backFromSearchBtn = document.getElementById('backFromSearchBtn');
+            const serviceCards = document.querySelectorAll('.service-card');
+            const paymentMethods = document.querySelectorAll('.payment-method');
+            const cardForm = document.getElementById('cardForm');
+            const pixQrCode = document.getElementById('pixQrCode');
+            const boletoInfo = document.getElementById('boletoInfo');
+            const cashInfo = document.getElementById('cashInfo');
+
+
+            const entryDate = document.getElementById('entryDate');
+            const entryTime = document.getElementById('entryTime');
+            const exitDate = document.getElementById('exitDate');
+            const exitTime = document.getElementById('exitTime');
+            const stayDuration = document.getElementById('stayDuration');
+
+
+            function showScreen(screenId) {
+                screens.forEach(screen => {
+                    screen.classList.remove('active');
+                });
+                document.getElementById(screenId).classList.add('active');
+                currentScreen = screenId;
+                window.scrollTo(0, 0);
+            }
+
+            function showLoading() {
+                loading.classList.add('active');
+            }
+
+            function hideLoading() {
+                loading.classList.remove('active');
+            }
+
+            function showNotification(message, type = 'success') {
+                notification.textContent = message;
+                notification.className = 'notification';
+                if (type === 'error') notification.classList.add('error');
+                if (type === 'warning') notification.classList.add('warning');
+                notification.classList.add('show');
+
+                setTimeout(() => {
+                    notification.classList.remove('show');
+                }, 3000);
+            }
+
+            function formatCurrency(value) {
+                return `R$ ${value.toFixed(2).replace('.', ',')}`;
+            }
+
+            function generateRandomCode(length = 8) {
+                const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+                let result = '';
+                for (let i = 0; i < length; i++) {
+                    result += chars.charAt(Math.floor(Math.random() * chars.length));
+                }
+                return result;
+            }
+
+
+            themeToggle.addEventListener('click', function() {
+                document.body.classList.toggle('dark-mode');
+                darkMode = !darkMode;
+
+                if (darkMode) {
+                    themeToggle.innerHTML = '<i class="fas fa-sun"></i>';
+                } else {
+                    themeToggle.innerHTML = '<i class="fas fa-moon"></i>';
+                }
+            });
+
+
+            chatButton.addEventListener('click', function() {
+                chatContainer.classList.toggle('active');
+            });
+
+            closeChat.addEventListener('click', function() {
+                chatContainer.classList.remove('active');
+            });
+
+            sendMessage.addEventListener('click', sendChatMessage);
+
+            chatInput.addEventListener('keypress', function(e) {
+                if (e.key === 'Enter') {
+                    sendChatMessage();
+                }
+            });
+
+            function sendChatMessage() {
+                const message = chatInput.value.trim();
+                if (message) {
+
+                    const userMessageElement = document.createElement('div');
+                    userMessageElement.classList.add('message', 'sent');
+                    userMessageElement.textContent = message;
+                    chatMessages.appendChild(userMessageElement);
+
+                    chatInput.value = '';
+                    chatMessages.scrollTop = chatMessages.scrollHeight;
+
+
+                    setTimeout(() => {
+                        let response;
+
+                        if (message.toLowerCase().includes('emergência') || message === '2') {
+                            response = 'Para emergências, ligue imediatamente para (11) 5555-9999. Nossa equipe está disponível 24h. Deseja que entremos em contato com você?';
+                        } else if (message.toLowerCase().includes('consulta') || message === '1') {
+                            response = 'Para agendar uma consulta, você pode usar nosso sistema online ou informar qual especialidade você precisa que posso te ajudar.';
+                        } else if (message.toLowerCase().includes('serviço') || message === '3') {
+                            response = 'Oferecemos diversos serviços como consultas, cirurgias, exames, banho e tosa, vacinação e muito mais. Qual serviço específico você gostaria de saber mais?';
+                        } else if (message.toLowerCase().includes('atendente') || message === '4') {
+                            response = 'Um de nossos atendentes entrará em contato com você em breve. Por favor, aguarde ou deixe seu telefone para retornarmos.';
+                        } else {
+                            response = 'Obrigado pelo seu contato! Como posso ajudar com sua dúvida sobre "' + message + '"?';
+                        }
+
+                        const botMessageElement = document.createElement('div');
+                        botMessageElement.classList.add('message', 'received');
+                        botMessageElement.textContent = response;
+                        chatMessages.appendChild(botMessageElement);
+
+                        chatMessages.scrollTop = chatMessages.scrollHeight;
+                    }, 1000);
+                }
+            }
+
+
+            registerLink.addEventListener('click', function(e) {
+                e.preventDefault();
+                showScreen('registerScreen');
+            });
+
+            backToLoginBtn.addEventListener('click', function() {
+                showScreen('loginScreen');
+            });
+
+            backToLoginFromAnimalBtn.addEventListener('click', function() {
+                showScreen('loginScreen');
+            });
+
+            backToAnimalBtn.addEventListener('click', function() {
+                showScreen('animalScreen');
+            });
+
+            backToServicesBtn.addEventListener('click', function() {
+                showScreen('servicesScreen');
+            });
+
+            backToScheduleBtn.addEventListener('click', function() {
+                showScreen('scheduleScreen');
+            });
+
+            nextToScheduleBtn.addEventListener('click', function() {
+                if (selectedServices.length === 0) {
+                    showNotification('Por favor, selecione pelo menos um serviço.', 'warning');
+                    return;
+                }
+
+
+                totalAmount = selectedServices.reduce((total, service) => total + service.price, 0);
+
+                showScreen('scheduleScreen');
+            });
+
+            loginForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                const username = document.getElementById('username').value;
+                const password = document.getElementById('password').value;
+
+                if (!username || !password) {
+                    showNotification('Por favor, preencha todos os campos.', 'error');
+                    return;
+                }
+
+                showLoading();
+
+                setTimeout(() => {
+                    hideLoading();
+                    showScreen('animalScreen');
+                    showNotification('Login realizado com sucesso!');
+                }, 1000);
+            });
+
+            registerForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                const newUsername = document.getElementById('newUsername').value;
+                const newEmail = document.getElementById('newEmail').value;
+                const newPassword = document.getElementById('newPassword').value;
+                const confirmPassword = document.getElementById('confirmPassword').value;
+
+                if (!newUsername || !newEmail || !newPassword || !confirmPassword) {
+                    showNotification('Por favor, preencha todos os campos.', 'error');
+                    return;
+                }
+
+                if (newPassword !== confirmPassword) {
+                    showNotification('As senhas não coincidem.', 'error');
+                    return;
+                }
+
+                showLoading();
+
+                setTimeout(() => {
+                    hideLoading();
+                    showScreen('loginScreen');
+                    showNotification('Cadastro realizado com sucesso! Faça login para continuar.');
+                }, 1000);
+            });
+
+            animalRegistered.addEventListener('change', function() {
+                if (this.checked) {
+                    newAnimalForm.style.display = 'none';
+                    searchAnimalForm.style.display = 'block';
+                } else {
+                    newAnimalForm.style.display = 'block';
+                    searchAnimalForm.style.display = 'none';
+                }
+            });
+
+            backFromSearchBtn.addEventListener('click', function() {
+                animalRegistered.checked = false;
+                newAnimalForm.style.display = 'block';
+                searchAnimalForm.style.display = 'none';
+            });
+
+            searchAnimalBtn.addEventListener('click', function() {
+                const searchName = document.getElementById('searchAnimalName').value;
+                const searchBreed = document.getElementById('searchAnimalBreed').value;
+
+                if (!searchName) {
+                    showNotification('Por favor, informe o nome do animal.', 'warning');
+                    return;
+                }
+
+                showLoading();
+
+                setTimeout(() => {
+                    hideLoading();
+
+                    animalData = {
+                        name: searchName,
+                        breed: searchBreed || 'Não informada',
+                        species: 'Cachorro',
+                        age: '3 anos'
+                    };
+
+                    showNotification('Animal encontrado com sucesso!');
+                    showScreen('servicesScreen');
+                }, 1000);
+            });
+
+            newAnimalForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                const animalName = document.getElementById('animalName').value;
+                const animalSpecies = document.getElementById('animalSpecies').value;
+                const animalBreed = document.getElementById('animalBreed').value;
+                const animalAge = document.getElementById('animalAge').value;
+                const ageUnit = document.getElementById('ageUnit').value;
+
+                if (!animalName || !animalSpecies || !animalAge) {
+                    showNotification('Por favor, preencha todos os campos obrigatórios.', 'warning');
+                    return;
+                }
+
+                showLoading();
+
+                animalData = {
+                    name: animalName,
+                    species: animalSpecies,
+                    breed: animalBreed || 'Não informada',
+                    age: `${animalAge} ${ageUnit}`
+                };
+
+                setTimeout(() => {
+                    hideLoading();
+                    showScreen('servicesScreen');
+                    showNotification('Animal cadastrado com sucesso!');
+                }, 1000);
+            });
+
+            serviceCards.forEach(card => {
+                card.addEventListener('click', function(e) {
+                    const hasSubmenu = this.getAttribute('data-has-submenu') === 'true';
+                    const serviceId = this.getAttribute('data-service');
+
+                    if (hasSubmenu) {
+
+                        if (!e.target.closest('.submenu')) {
+                            const submenu = this.querySelector('.submenu');
+                            submenu.classList.toggle('active');
+                        }
+                    } else {
+
+                        this.classList.toggle('selected');
+
+                        const serviceTitle = this.querySelector('.service-title').textContent.trim();
+                        const priceText = this.querySelector('.service-price').textContent;
+                        const price = parseFloat(priceText.replace('R$', '').replace(',', '.')) || 0;
+
+                        if (this.classList.contains('selected')) {
+                            selectedServices.push({
+                                id: serviceId,
+                                name: serviceTitle,
+                                price: price
+                            });
+                        } else {
+                            selectedServices = selectedServices.filter(s => s.id !== serviceId);
+                        }
+                    }
+                });
+            });
+
+
+            document.querySelectorAll('.submenu-item').forEach(item => {
+                item.addEventListener('click', function() {
+                    const subserviceId = this.getAttribute('data-subservice');
+                    const parentService = this.closest('.service-card');
+                    const serviceId = parentService.getAttribute('data-service');
+
+                    this.classList.toggle('selected');
+
+                    const serviceName = parentService.querySelector('.service-title').textContent.trim();
+                    const subserviceName = this.textContent.trim();
+                    const priceMatch = subserviceName.match(/R\$\s*([\d,.]+)/);
+                    const price = priceMatch ? parseFloat(priceMatch[1].replace('.', '').replace(',', '.')) : 0;
+
+                    const serviceKey = `${serviceId}-${subserviceId}`;
+
+                    if (this.classList.contains('selected')) {
+                        selectedServices.push({
+                            id: serviceKey,
+                            name: `${serviceName} - ${subserviceName.split('-')[0].trim()}`,
+                            price: price
+                        });
+
+
+                        parentService.classList.add('selected');
+                    } else {
+                        selectedServices = selectedServices.filter(s => s.id !== serviceKey);
+
+
+                        const hasSelectedSubservices = Array.from(parentService.querySelectorAll('.submenu-item')).some(si => si.classList.contains('selected'));
+
+                        if (!hasSelectedSubservices) {
+                            parentService.classList.remove('selected');
+                        }
+                    }
+                });
+            });
+
+
+            function calculateStayDuration() {
+                if (!entryDate.value || !entryTime.value || !exitDate.value || !exitTime.value) {
+                    stayDuration.value = '';
+                    return;
+                }
+
+                const entry = new Date(`${entryDate.value}T${entryTime.value}`);
+                const exit = new Date(`${exitDate.value}T${exitTime.value}`);
+
+                if (exit <= entry) {
+                    stayDuration.value = 'Data de saída deve ser posterior à entrada';
+                    return;
+                }
+
+                const diffMs = exit - entry;
+                const diffDays = Math.floor(diffMs / (1000 * 60 * 60 * 24));
+                const diffHours = Math.floor((diffMs % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+
+                stayDuration.value = `${diffDays} dias e ${diffHours} horas`;
+            }
+
+            entryDate.addEventListener('change', calculateStayDuration);
+            entryTime.addEventListener('change', calculateStayDuration);
+            exitDate.addEventListener('change', calculateStayDuration);
+            exitTime.addEventListener('change', calculateStayDuration);
+
+            scheduleForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+
+                if (!entryDate.value || !entryTime.value || !exitDate.value || !exitTime.value) {
+                    showNotification('Por favor, preencha todas as datas e horários.', 'warning');
+                    return;
+                }
+
+                const entry = new Date(`${entryDate.value}T${entryTime.value}`);
+                const exit = new Date(`${exitDate.value}T${exitTime.value}`);
+
+                if (exit <= entry) {
+                    showNotification('A data de saída deve ser posterior à data de entrada.', 'error');
+                    return;
+                }
+
+                showLoading();
+
+                setTimeout(() => {
+                    hideLoading();
+                    const servicesSummary = document.getElementById('servicesSummary');
+                    servicesSummary.innerHTML = '';
+
+                    selectedServices.forEach(service => {
+                        const item = document.createElement('div');
+                        item.classList.add('summary-item');
+                        item.innerHTML = `
+                            <span>${service.name}</span>
+                            <span>${formatCurrency(service.price)}</span>
+                        `;
+                        servicesSummary.appendChild(item);
+                    });
+
+                    const diffMs = exit - entry;
+                    const diffDays = Math.ceil(diffMs / (1000 * 60 * 60 * 24));
+
+                    if (diffDays > 0 && !selectedServices.some(s => s.id === 'hospedagens')) {
+                        const hospedagemPrice = 80 * diffDays;
+
+                        const item = document.createElement('div');
+                        item.classList.add('summary-item');
+                        item.innerHTML = `
+                            <span>Hospedagem (${diffDays} dias)</span>
+                            <span>${formatCurrency(hospedagemPrice)}</span>
+                        `;
+                        servicesSummary.appendChild(item);
+
+                        selectedServices.push({
+                            id: 'hospedagens',
+                            name: `Hospedagem (${diffDays} dias)`,
+                            price: hospedagemPrice
+                        });
+                    }
+
+                    totalAmount = selectedServices.reduce((total, service) => total + service.price, 0);
+                    document.getElementById('totalAmount').textContent = formatCurrency(totalAmount);
+
+                    showScreen('paymentScreen');
+                }, 1000);
+            });
+
+            paymentMethods.forEach(method => {
+                method.addEventListener('click', function() {
+                    paymentMethods.forEach(m => m.classList.remove('selected'));
+                    this.classList.add('selected');
+
+                    selectedPaymentMethod = this.getAttribute('data-method');
+
+                    cardForm.style.display = 'none';
+                    pixQrCode.style.display = 'none';
+                    boletoInfo.style.display = 'none';
+                    cashInfo.style.display = 'none';
+
+                    if (selectedPaymentMethod === 'credit' || selectedPaymentMethod === 'debit') {
+                        cardForm.style.display = 'block';
+                    } else if (selectedPaymentMethod === 'pix') {
+                        pixQrCode.style.display = 'block';
+                    } else if (selectedPaymentMethod === 'boleto') {
+                        boletoInfo.style.display = 'block';
+                    } else if (selectedPaymentMethod === 'cash') {
+                        cashInfo.style.display = 'block';
+                    }
+                });
+            });
+
+            payBtn.addEventListener('click', function() {
+                if (!selectedPaymentMethod) {
+                    showNotification('Por favor, selecione uma forma de pagamento.', 'warning');
+                    return;
+                }
+
+                if ((selectedPaymentMethod === 'credit' || selectedPaymentMethod === 'debit') &&
+                    (!document.getElementById('cardNumber').value ||
+                        !document.getElementById('cardExpiry').value ||
+                        !document.getElementById('cardCvv').value ||
+                        !document.getElementById('cardName').value)) {
+                    showNotification('Por favor, preencha todos os dados do cartão.', 'warning');
+                    return;
+                }
+
+                showLoading();
+
+                setTimeout(() => {
+                    hideLoading();
+
+                    const now = new Date();
+                    document.getElementById('receiptDate').textContent = now.toLocaleDateString();
+                    document.getElementById('receiptTime').textContent = now.toLocaleTimeString();
+                    document.getElementById('receiptAnimal').textContent = animalData.name;
+
+                    let servicesText = '';
+                    selectedServices.forEach((service, index) => {
+                        if (index > 0) servicesText += ', ';
+                        servicesText += service.name;
+                    });
+                    document.getElementById('receiptServices').textContent = servicesText;
+
+                    const scheduleText = `${entryDate.value} ${entryTime.value} até ${exitDate.value} ${exitTime.value}`;
+                    document.getElementById('receiptSchedule').textContent = scheduleText;
+
+                    let paymentMethodText = '';
+                    switch (selectedPaymentMethod) {
+                        case 'credit':
+                            paymentMethodText = 'Cartão de Crédito';
+                            break;
+                        case 'debit':
+                            paymentMethodText = 'Cartão de Débito';
+                            break;
+                        case 'pix':
+                            paymentMethodText = 'PIX';
+                            break;
+                        case 'cash':
+                            paymentMethodText = 'Dinheiro';
+                            break;
+                        case 'boleto':
+                            paymentMethodText = 'Boleto';
+                            break;
+                    }
+                    document.getElementById('receiptPaymentMethod').textContent = paymentMethodText;
+
+                    document.getElementById('receiptTotal').textContent = formatCurrency(totalAmount);
+                    document.getElementById('confirmationCode').textContent = generateRandomCode();
+
+                    showScreen('receiptScreen');
+                    showNotification('Pagamento realizado com sucesso!');
+                }, 1500);
+            });
+
+            downloadReceiptBtn.addEventListener('click', function() {
+                showNotification('Comprovante baixado com sucesso!');
+            });
+
+            newAppointmentBtn.addEventListener('click', function() {
+
+                selectedServices = [];
+                selectedPaymentMethod = '';
+
+                document.getElementById('animalName').value = '';
+                document.getElementById('animalSpecies').selectedIndex = 0;
+                document.getElementById('animalBreed').value = '';
+                document.getElementById('animalAge').value = '';
+                document.getElementById('ageUnit').selectedIndex = 0;
+                document.getElementById('healthHistory').value = '';
+                document.getElementById('visitHistory').value = '';
+
+                document.getElementById('entryDate').value = '';
+                document.getElementById('entryTime').value = '';
+                document.getElementById('exitDate').value = '';
+                document.getElementById('exitTime').value = '';
+                document.getElementById('stayDuration').value = '';
+                document.getElementById('observations').value = '';
+
+                document.querySelectorAll('.service-card').forEach(card => {
+                    card.classList.remove('selected');
+                });
+                document.querySelectorAll('.submenu-item').forEach(item => {
+                    item.classList.remove('selected');
+                });
+
+                document.querySelectorAll('.submenu').forEach(submenu => {
+                    submenu.classList.remove('active');
+                });
+
+                showScreen('animalScreen');
+            });
+
+            const today = new Date().toISOString().split('T')[0];
+            entryDate.min = today;
+            exitDate.min = today;
+
+            showScreen('loginScreen');
+        });
+        // Fim JavaScript
+    </script>
+</body>
+
+</html>
