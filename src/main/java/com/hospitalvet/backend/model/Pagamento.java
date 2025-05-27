@@ -1,7 +1,6 @@
 package com.hospitalvet.backend.model;
 
 import jakarta.persistence.*;
-
 import java.math.BigDecimal;
 
 @Entity
@@ -25,8 +24,7 @@ public class Pagamento {
 
     public Pagamento() {}
 
-    // getters e setters
-
+    // Getters e Setters
     public Integer getId() {
         return id;
     }

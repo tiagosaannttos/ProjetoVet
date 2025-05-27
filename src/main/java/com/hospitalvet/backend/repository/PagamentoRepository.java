@@ -6,5 +6,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import java.util.List;
 
 public interface PagamentoRepository extends JpaRepository<Pagamento, Integer> {
-    List<Pagamento> findByIdAgendamento(Integer idAgendamento);
+    List<Pagamento> findByAgendamentoId(Integer idAgendamento); // Corrigido nome do campo
 }

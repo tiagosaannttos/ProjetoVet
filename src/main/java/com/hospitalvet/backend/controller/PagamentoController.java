@@ -17,7 +17,7 @@ public class PagamentoController {
 
     @GetMapping("/agendamento/{idAgendamento}")
     public List<Pagamento> listarPorAgendamento(@PathVariable int idAgendamento) {
-        return pagamentoRepository.findByIdAgendamento(idAgendamento);
+        return pagamentoRepository.findByAgendamentoId(idAgendamento); // CORRIGIDO
     }
 
     @PostMapping
