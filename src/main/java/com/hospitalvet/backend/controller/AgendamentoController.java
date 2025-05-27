@@ -15,7 +15,7 @@ public class AgendamentoController {
     private AgendamentoRepository agendamentoRepository;
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deletarAgendamento(@PathVariable Long id) {
+    public ResponseEntity<Void> deletarAgendamento(@PathVariable Integer id) {
         if (agendamentoRepository.existsById(id)) {
             agendamentoRepository.deleteById(id);
             return ResponseEntity.noContent().build();
